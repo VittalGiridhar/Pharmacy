@@ -2,7 +2,7 @@ from fastapi import FastAPI, APIRouter, Depends
 from .database import get_db
 from sqlalchemy.orm import Session
 from . import models
-from google.cloud import dialogflow_v2
+
 
 router = APIRouter(
     prefix="/dialogflow",

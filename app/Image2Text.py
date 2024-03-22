@@ -5,6 +5,9 @@ import base64
 from fastapi import APIRouter, WebSocket
 from typing import Dict
 
+
+
+
 router = APIRouter(
     prefix='/image',
     tags=["Text from Image"]
@@ -52,10 +55,6 @@ async def imageExtraction(websocket: WebSocket, user_Id: int):
 
         cv2.imwrite('reconstructed_image.jpg', img)
 
-        # _, im_arr = cv2.imencode('.jpg', img) 
-        # im_bytes = im_arr.tobytes()
-        # im_b64 = base64.b64encode(im_bytes)
-        # im_b64_str = im_b64.decode('utf-8')
         x=cv2.imread('page.jpg')
         text=imgExt()
         await manager.send_message(user_Id=user_Id, websocket=websocket, message=text)
