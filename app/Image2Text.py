@@ -5,9 +5,6 @@ import base64
 from fastapi import APIRouter, WebSocket
 from typing import Dict
 
-
-
-
 router = APIRouter(
     prefix='/image',
     tags=["Text from Image"]
