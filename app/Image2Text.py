@@ -50,15 +50,13 @@ async def imageExtraction(websocket: WebSocket, user_Id: int):
                 img[y, x] = lst[index]
                 index += 1
 
-        # Save the image to a file
         cv2.imwrite('reconstructed_image.jpg', img)
 
-        _, im_arr = cv2.imencode('.jpg', img) 
-        im_bytes = im_arr.tobytes()
-        im_b64 = base64.b64encode(im_bytes)
-        im_b64_str = im_b64.decode('utf-8')
+        # _, im_arr = cv2.imencode('.jpg', img) 
+        # im_bytes = im_arr.tobytes()
+        # im_b64 = base64.b64encode(im_bytes)
+        # im_b64_str = im_b64.decode('utf-8')
         x=cv2.imread('page.jpg')
-        print(x)
         text=imgExt()
         await manager.send_message(user_Id=user_Id, websocket=websocket, message=text)
     except json.JSONDecodeError as e:

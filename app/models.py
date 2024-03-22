@@ -1,11 +1,6 @@
 from .database import Base
 from sqlalchemy import Column,Integer,String,VARCHAR,ForeignKey,Float
 
-class Med_for_chatbox(Base):
-    __tablename__="Medicine_for_chatbox"
-    medicine_ID=Column("med_ID",Integer,primary_key=True,nullable=False,unique=True)
-    medicine_name=Column("med_name",String,nullable=False)
-    medicine_feature=Column("med_feature",String,nullable=False)
 
 class Pharmacy(Base):
     __tablename__="Pharmacy_Table"
@@ -30,10 +25,15 @@ class Pharmacy(Base):
 
 class Medicine_for_Admin(Base):
     __tablename__="Med_for_Admin"
-    medicine_id=Column("Medicine_ID",Integer,primary_key=True,nullable=False)
-    pharmacy_ID=Column("Pharmacy_ID",Integer,ForeignKey("Pharmacy_Table.Pharmacy_ID",ondelete="CASCADE"),nullable=False)
-    Medicine_name=Column("medicine_name",String,unique=True,nullable=False)
+    Medicine_ID=Column("Medicine_ID",Integer,primary_key=True,nullable=False)
+    medicine_name=Column("medicine_name",String,unique=True,nullable=False)
     status=Column("status",String,nullable=False,server_default="unverified")
     price_for_1_strip=Column("price_for_1_strip",Float,nullable=False,server_default="0.0")
 
-
+class Consultation(Base):
+    __tablename__="Consultation"
+    doctor_Id=Column("doctor_Id",Integer,primary_key=True,nullable=False)
+    doctor_username=Column("doctor_username",String,nullable=False)
+    doctor_email=Column("doctor_email",String,unique=True,nullable=False)
+    password=Column("password",String,nullable=False)
+    timings=Column("timings",String,unique=True,server_default="0")  
